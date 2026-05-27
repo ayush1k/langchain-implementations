@@ -1,68 +1,51 @@
-from pathlib import Path
-import json
+from langchain_huggingface import HuggingFaceEndpoint
+from dotenv import load_dotenv
 import os
-from urllib.error import HTTPError
-from urllib.request import Request, urlopen
 
+# Load environment variables from .env file
+load_dotenv()
 
-def load_hf_token() -> str:
-    current = Path(__file__).resolve()
-    for parent in [current.parent, *current.parents]:
-        env_file = parent / ".env"
-        if not env_file.exists():
-            continue
+def get_hf_token() -> str:
+    # Try common names for the Hugging Face token
+    # The .env file in this project uses HF_ACCESS_TOKEN
+    return os.getenv("HF_ACCESS_TOKEN") or os.getenv("HF_TOKEN") or ""
 
-        for line in env_file.read_text().splitlines():
-            stripped = line.strip()
-            if not stripped or stripped.startswith("#") or "=" not in stripped:
-                continue
+def main():
+    # Model ID to use
+    # Mistral-7B-v0.1 is used here as it's highly available on the Inference API
+    model_id = "mistralai/Mistral-7B-v0.1"
+    
+    hf_token = get_hf_token()
+    
+    if not hf_token:
+        print("Error: HF_ACCESS_TOKEN was not found in .env or the environment.")
+        return
 
-            key, value = stripped.split("=", 1)
-            if key.strip() == "HF_TOKEN":
-                return value.strip().strip('"').strip("'")
+    try:
+        # Initialize the Hugging Face Endpoint
+        # This uses the modern routing system and handles authentication automatically
+        llm = HuggingFaceEndpoint(
+            repo_id=model_id,
+            huggingfacehub_api_token=hf_token,
+            temperature=0.7,
+            max_new_tokens=100,
+        )
 
-    return os.getenv("HF_TOKEN", "")
+        print(f"Connecting to Hugging Face model: {model_id}...")
+        
+        # Invoke the model
+        prompt = "What is the capital of India?"
+        result = llm.invoke(prompt)
+        
+        print(f"\nPrompt: {prompt}")
+        print(f"Model Response:\n{result}")
+        
+    except Exception as e:
+        print(f"Failed to access Hugging Face API: {e}")
+        print("\nSuggestions:")
+        print("1. Check if the model ID is correct and publicly available.")
+        print("2. Ensure your token has 'read' access.")
+        print("3. If you get a 503 error, the model is likely loading. Try again in 2-3 minutes.")
 
-
-model_id = "TinyLlama/TinyLlama-1.1B-step-50K-105b"
-prompt = "What is the capital of India?"
-hf_token = load_hf_token()
-
-if not hf_token:
-    raise RuntimeError("HF_TOKEN was not found in .env or the environment.")
-
-url = f"https://api-inference.huggingface.co/models/{model_id}"
-payload = json.dumps(
-    {
-        "inputs": prompt,
-        "parameters": {
-            "max_new_tokens": 100,
-            "do_sample": True,
-            "temperature": 0.7,
-            "top_p": 0.95,
-            "return_full_text": False,
-        },
-    }
-).encode("utf-8")
-
-request = Request(
-    url,
-    data=payload,
-    headers={
-        "Authorization": f"Bearer {hf_token}",
-        "Content-Type": "application/json",
-    },
-    method="POST",
-)
-
-try:
-    with urlopen(request) as response:
-        result = json.loads(response.read().decode("utf-8"))
-except HTTPError as error:
-    error_body = error.read().decode("utf-8")
-    raise RuntimeError(f"HF API request failed ({error.code}): {error_body}") from error
-
-if isinstance(result, list) and result and "generated_text" in result[0]:
-    print(result[0]["generated_text"])
-else:
-    print(result)
+if __name__ == "__main__":
+    main()
