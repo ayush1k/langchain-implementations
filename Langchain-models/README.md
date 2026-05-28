@@ -6,7 +6,7 @@ This directory contains implementations and experiments with various types of mo
 
 ### 1. Model Integrations
 - **Google Gemini**: Integration using `langchain_google_genai` for both chat and embedding tasks.
-- **HuggingFace**: Using `langchain_huggingface` to connect to models via the Inference API (`HuggingFaceEndpoint`) and running models locally.
+- **HuggingFace**: Using `langchain_huggingface` to connect to models via the Inference API (`HuggingFaceEndpoint`) or running them locally using `HuggingFacePipeline` and `ChatHuggingFace` for hardware-accelerated inference.
 
 ### 2. Chat Models vs. LLMs
 - **Chat Models**: Learned to use `ChatGoogleGenerativeAI` for interactive, message-based conversations.

@@ -11,8 +11,11 @@ This directory explores how to structure inputs for LLMs, manage conversational 
     - `AIMessage`: Representing the model's response.
 
 ### 2. Prompt Templates
-- **Dynamic Prompts**: Using `PromptTemplate` to create reusable prompts with placeholders (e.g., `{paper_input}`, `{style_input}`).
-- **Persistence**: Saving templates to `template.json` and loading them using `load_prompt` to separate prompt logic from code.
+- **Dynamic Prompts**: Using `PromptTemplate` and `ChatPromptTemplate` to create reusable prompts.
+- **Message Types (Tuple Syntax)**: Learning to structure chat prompts using lists of tuples, e.g., `('system', '...')`, `('human', '...')`.
+- **MessagesPlaceholder**: Using `MessagesPlaceholder` to dynamically inject variable-length chat history into a prompt.
+- **Persistence**: Saving templates to `template.json` and loading them using `load_prompt`.
+- **External History**: Loading conversational context from external text files (`chat_history.txt`).
 
 ### 3. Conversational Memory
 - Implementing basic **Chat History** by maintaining a list of interactions to provide context for subsequent model calls.
