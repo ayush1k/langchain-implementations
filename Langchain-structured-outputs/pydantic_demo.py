@@ -1,4 +1,10 @@
 from pydantic import BaseModel
-import pydantic
 
-print(pydantic.__version__)
+class Student(BaseModel):
+    name: str
+
+new_student = {'name':24}
+
+student = Student(**new_student)
+
+print(student)
