@@ -1,1 +1,37 @@
-# langchain-implementations
+# LangChain Implementations
+
+This repository is a collection of practical implementations and experiments using the LangChain framework. It serves as a learning journal and a reference for building LLM-powered applications with various models, prompt patterns, and structured output techniques.
+
+## Project Structure
+
+The project is organized into modular directories, each focusing on a specific aspect of the LangChain ecosystem:
+
+- **[LangChain Models](./Langchain-models/)**: Experiments with Chat Models, Embedding Models, and LLMs using Google Gemini and HuggingFace. Covers semantic search and document similarity.
+- **[LangChain Prompts](./Langchain-prompts/)**: Exploration of prompt templates, message structuring, conversational memory, and basic Streamlit UIs.
+- **[LangChain Structured Outputs](./Langchain-structured-outputs/)**: Techniques for extracting validated, structured data from LLMs using Pydantic, TypedDict, and JSON schemas.
+
+## Getting Started
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/ayush1k/langchain-implementations.git
+   cd langchain-implementations
+   ```
+
+2. **Setup Environment:**
+   Create a `.env` file in the root directory (and relevant subdirectories) with your API keys:
+   ```env
+   GOOGLE_API_KEY=your_google_api_key
+   HF_ACCESS_TOKEN=your_huggingface_token
+   ```
+
+3. **Install Dependencies:**
+   Refer to the `setup/` directory or the individual `README.md` files in each folder for specific installation instructions.
+
+## Security Features
+
+- **Gemini Sandbox**: This project supports the `GEMINI_SANDBOX` mode for isolated execution of AI-generated commands. To enable it, set `GEMINI_SANDBOX=true` in your environment or `.env` file.
+
+## Documentation Standard
+
+Each directory contains its own `README.md` following a consistent pattern defined in [readme-creation-prompt.md](./readme-creation-prompt.md).
