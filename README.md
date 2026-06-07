@@ -10,6 +10,7 @@ The project is organized into modular directories, each focusing on a specific a
 - **[LangChain Models](./Langchain-models/)**: Experiments with Chat Models, Embedding Models, and LLMs using Google Gemini and HuggingFace. Covers semantic search and document similarity.
 - **[LangChain Output Parsers](./Langchain-output-parsers/)**: Techniques for transforming LLM output into structured data like JSON, Lists, and Pydantic models.
 - **[LangChain Prompts](./Langchain-prompts/)**: Exploration of prompt templates, message structuring, conversational memory, and basic Streamlit UIs.
+- **[LangChain Runnables](./Langchain-runnables/)**: Deep dive into LangChain Expression Language (LCEL) primitives like Sequences, Parallel execution, Lambdas, and Branching.
 - **[LangChain Structured Outputs](./Langchain-structured-outputs/)**: Techniques for extracting validated, structured data from LLMs using Pydantic, TypedDict, and JSON schemas.
 
 ## Getting Started
