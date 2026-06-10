@@ -1,4 +1,4 @@
-# LangChain Prompts & Interaction Patterns
+# LangChain Prompts
 
 This directory explores how to structure inputs for LLMs, manage conversational state, and build user interfaces for LangChain applications. It focuses on the bridge between raw models and user-facing features.
 
