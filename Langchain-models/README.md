@@ -1,6 +1,6 @@
 # LangChain Models
 
-This directory contains implementations and experiments with various types of models supported by LangChain, focusing on Chat Models, Embedding Models, and Large Language Models (LLMs).
+This directory contains implementations and experiments with various types of models supported by LangChain, focusing on Chat Models, Embedding Models, and Large Language Models (LLMs). It explores integrations with both cloud-hosted services like Google Gemini and locally running models via Hugging Face. Additionally, it demonstrates core concepts such as generating vector embeddings and calculating semantic similarity between documents.
 
 ## What We Learned
 

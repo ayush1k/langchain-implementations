@@ -1,6 +1,6 @@
 # LangChain Built-in Tools
 
-This directory explores the variety of pre-defined tools available in LangChain that allow models to interact with the world through web searches, shell commands, and code execution.
+This directory explores the variety of pre-defined tools available in LangChain that allow models to interact with the external world. It demonstrates how to integrate web search, shell execution, and Python REPL as tools for Large Language Models. By binding these tools, the agent gains dynamic access to real-time information and computational capabilities.
 
 ## What We Learned
 

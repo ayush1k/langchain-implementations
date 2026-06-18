@@ -6,6 +6,7 @@ This repository is a collection of practical implementations and experiments usi
 
 The project is organized into modular directories, each focusing on a specific aspect of the LangChain ecosystem:
 
+- **[LangChain Agents](./Agents-in-langchain/)**: Construction and execution of autonomous agents using the ReAct framework, custom tool bindings, and LangSmith Hub.
 - **[LangChain Chains](./Langchain-chains/)**: Exploration of LCEL, sequential chains, parallel processing, and conditional routing logic.
 - **[LangChain Document Loaders](./Langchain-document-loaders/)**: Practical use of various loaders for CSV, PDF, Text, and Web content.
 - **[LangChain Models](./Langchain-models/)**: Experiments with Chat Models, Embedding Models, and LLMs using Google Gemini and HuggingFace. Covers semantic search and document similarity.
