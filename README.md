@@ -47,3 +47,4 @@ The project is organized into modular directories, each focusing on a specific a
 
 Each directory contains its own `README.md` following a consistent pattern defined in [readme-creation-prompt.md](./readme-creation-prompt.md).
 the prompt was used to generate readme for each directory
+                                 
